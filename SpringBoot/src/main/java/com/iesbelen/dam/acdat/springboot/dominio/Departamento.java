@@ -40,5 +40,4 @@ public class Departamento {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-
 }
