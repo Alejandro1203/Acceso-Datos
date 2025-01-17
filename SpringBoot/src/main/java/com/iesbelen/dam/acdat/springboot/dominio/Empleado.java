@@ -3,10 +3,9 @@ package com.iesbelen.dam.acdat.springboot.dominio;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "empleados")
+@Table(name = "empleados", schema = "public")
 public class Empleado {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "empno", nullable = false)
     private Integer id;
 
@@ -16,13 +15,9 @@ public class Empleado {
     @Column(name = "puesto", length = 15)
     private String puesto;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "depno")
     private Departamento depno;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "depno_depno")
-    private Departamento depnoDepno;
 
     public Integer getId() {
         return id;
@@ -56,11 +51,5 @@ public class Empleado {
         this.depno = depno;
     }
 
-    public Departamento getDepnoDepno() {
-        return depnoDepno;
-    }
 
-    public void setDepnoDepno(Departamento depnoDepno) {
-        this.depnoDepno = depnoDepno;
-    }
 }

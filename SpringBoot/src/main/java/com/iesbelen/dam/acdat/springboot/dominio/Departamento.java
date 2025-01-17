@@ -3,11 +3,10 @@ package com.iesbelen.dam.acdat.springboot.dominio;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "departamentos")
+@Table(name = "departamentos", schema = "public")
 public class Departamento {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "depno", nullable = false)
     private Integer id;
 
