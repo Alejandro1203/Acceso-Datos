@@ -68,7 +68,7 @@ public class controladorEmpleado {
         }
     }
 
-    @GetMapping("/dto/{id}")
+    @GetMapping("dto/{id}")
     public ResponseEntity<EmpleadoDTO> buscarEmpleadoDTOById(@PathVariable(value = "id") int id) {
         Optional<Empleado> empleado = empleadoDAO.findById(id);
 
@@ -81,13 +81,12 @@ public class controladorEmpleado {
 //            empleadoDTO.setDepartamentoNombre(empleado.get().getDepno().getNombre());
 //            empleadoDTO.setDepartamentoUbicacion(empleado.get().getDepno().getUbicacion());
 
-
             Optional<Departamento> departamento = departamentoDAO.findById(empleado.get().getDepno().getId());
 
             ModelMapper mapper = new ModelMapper();
             EmpleadoDTO empleadoDTO = mapper.map(empleado.get(), EmpleadoDTO.class);
-            mapper.map(departamento.get(), empleadoDTO);
 
+            mapper.map(departamento.get(), empleadoDTO);
 
             return ResponseEntity.ok().body(empleadoDTO);
         } else {
