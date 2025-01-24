@@ -1,4 +1,4 @@
-package com.iesbelen.dam.acdat.springboot.dominio;
+package com.iesbelen.dam.acdat.springboot.modelos.dominio;
 
 import jakarta.persistence.*;
 

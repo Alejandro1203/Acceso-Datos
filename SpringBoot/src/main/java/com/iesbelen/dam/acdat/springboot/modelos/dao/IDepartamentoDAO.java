@@ -1,6 +1,6 @@
-package com.iesbelen.dam.acdat.springboot.dao;
+package com.iesbelen.dam.acdat.springboot.modelos.dao;
 
-import com.iesbelen.dam.acdat.springboot.dominio.Departamento;
+import com.iesbelen.dam.acdat.springboot.modelos.dominio.Departamento;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

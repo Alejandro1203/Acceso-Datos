@@ -1,4 +1,4 @@
-package com.iesbelen.dam.acdat.springboot.dto;
+package com.iesbelen.dam.acdat.springboot.modelos.dto;
 
 public class EmpleadoDTO {
     private int empno;

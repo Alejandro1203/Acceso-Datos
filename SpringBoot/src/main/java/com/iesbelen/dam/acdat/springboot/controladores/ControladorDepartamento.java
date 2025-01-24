@@ -1,7 +1,7 @@
 package com.iesbelen.dam.acdat.springboot.controladores;
 
-import com.iesbelen.dam.acdat.springboot.dao.IDepartamentoDAO;
-import com.iesbelen.dam.acdat.springboot.dominio.Departamento;
+import com.iesbelen.dam.acdat.springboot.modelos.dao.IDepartamentoDAO;
+import com.iesbelen.dam.acdat.springboot.modelos.dominio.Departamento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/departamentos")
-public class controladorDepartamento {
+public class ControladorDepartamento {
 
     @Autowired
     IDepartamentoDAO departamentoDAO;
