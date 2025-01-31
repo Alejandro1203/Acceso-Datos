@@ -3,6 +3,8 @@ package com.iesbelen.dam.acdat.spring.apirest_vf.modelo.entidades;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -32,6 +34,9 @@ public class Departamento {
         this.id = id;
     }
 
+    @Basic
+    @NotEmpty(message = "El nombre no puede estar vacío")
+    @Size(min = 2, max = 14, message = "El nombre tiene que tener longitud [2-14]")
     public String getNombre() {
         return nombre;
     }
@@ -40,6 +45,9 @@ public class Departamento {
         this.nombre = nombre;
     }
 
+    @Basic
+    @NotEmpty(message = "La ubicación no puede estar vacía")
+    @Size(min = 2, max = 13, message = "La ubicación tiene que tener longitud [2-13]")
     public String getUbicacion() {
         return ubicacion;
     }
