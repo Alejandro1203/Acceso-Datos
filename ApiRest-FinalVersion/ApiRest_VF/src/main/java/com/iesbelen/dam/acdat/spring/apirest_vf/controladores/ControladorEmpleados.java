@@ -33,4 +33,33 @@ public class ControladorEmpleados {
     public Empleado guardarEmpleado(@Validated @RequestBody Empleado empleado){
         return empleadosDAO.save(empleado);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> borrarEmpleado(@PathVariable(value = "id") int id){
+        Optional<Empleado> Employeexml = empleadosDAO.findById(id);
+
+        if(Employeexml.isPresent()){
+            empleadosDAO.deleteById(id);
+
+            return ResponseEntity.ok().body("Empleado con id " + id + " borrado.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> actualizarEmpleado(@PathVariable(value = "id") int id, @Validated @RequestBody Empleado nuevoEmpleado){
+        Optional<Empleado> empleado = empleadosDAO.findById(id);
+
+        if(empleado.isPresent()){
+            empleado.get().setNombre(nuevoEmpleado.getNombre());
+            empleado.get().setPuesto(nuevoEmpleado.getPuesto());
+            empleado.get().setDepno(nuevoEmpleado.getDepno());
+            empleadosDAO.save(nuevoEmpleado);
+
+            return ResponseEntity.ok().body("Empleado con id " + id + " actualizado.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
