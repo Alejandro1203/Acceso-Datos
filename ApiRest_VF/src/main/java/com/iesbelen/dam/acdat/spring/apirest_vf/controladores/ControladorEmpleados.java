@@ -1,6 +1,9 @@
 package com.iesbelen.dam.acdat.spring.apirest_vf.controladores;
 
+import com.iesbelen.dam.acdat.spring.apirest_vf.modelo.dao.IDepartamentosDAO;
 import com.iesbelen.dam.acdat.spring.apirest_vf.modelo.dao.IEmpleadosDAO;
+import com.iesbelen.dam.acdat.spring.apirest_vf.modelo.dto.EmpleadosDTO;
+import com.iesbelen.dam.acdat.spring.apirest_vf.modelo.entidades.Departamento;
 import com.iesbelen.dam.acdat.spring.apirest_vf.modelo.entidades.Empleado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,9 @@ public class ControladorEmpleados {
 
     @Autowired
     IEmpleadosDAO empleadosDAO;
+
+    @Autowired
+    IDepartamentosDAO departamentosDAO;
 
     @GetMapping
     public List<Empleado> buscarEmpleados(){
@@ -58,6 +64,27 @@ public class ControladorEmpleados {
             empleadosDAO.save(nuevoEmpleado);
 
             return ResponseEntity.ok().body("Empleado con id " + id + " actualizado.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/dto/{id}")
+    public ResponseEntity<EmpleadosDTO> buscarEmpleadoDTOPorId(@PathVariable(value = "id") int id){
+        Optional<Empleado> empleado = empleadosDAO.findById(id);
+
+        if(empleado.isPresent()){
+            Optional<Departamento> departamento = departamentosDAO.findById(empleado.get().getDepno().getId());
+
+            EmpleadosDTO empleadosDTO = new EmpleadosDTO();
+            empleadosDTO.setId(empleado.get().getId());
+            empleadosDTO.setNombre(empleado.get().getNombre());
+            empleadosDTO.setPuesto(empleado.get().getPuesto());
+            empleadosDTO.setDepno(empleado.get().getDepno().getId());
+            empleadosDTO.setDepartamentoNombre(departamento.get().getNombre());
+            empleadosDTO.setDepartamentoUbicacion(departamento.get().getUbicacion());
+
+            return ResponseEntity.ok().body(empleadosDTO);
         } else {
             return ResponseEntity.notFound().build();
         }
