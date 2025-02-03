@@ -16,7 +16,9 @@ public class Manufacturer {
     @Column(name = "num_employees")
     private Integer numEmployees;
 
+    @Column(name = "init_year")
     private Integer year;
+
 
     public long getId() {
         return id;
@@ -53,8 +55,7 @@ public class Manufacturer {
     public Manufacturer() {
     }
 
-    public Manufacturer(long id, String nombre, Integer numEmployees, Integer year) {
-        this.id = id;
+    public Manufacturer(String nombre, Integer numEmployees, Integer year) {
         this.nombre = nombre;
         this.numEmployees = numEmployees;
         this.year = year;

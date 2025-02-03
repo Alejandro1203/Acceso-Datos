@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -21,12 +22,13 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
     @Override
     public List<Manufacturer> findAllByYear(Integer year) {
-        return List.of();
+        Objects.requireNonNull(year);
+        return manufacturerRepository.findAllByYear(year);
     }
 
     @Override
     public Optional<Manufacturer> findById(Long id) {
-        return Optional.empty();
+        return manufacturerRepository.findById(id);
     }
 
     @Override
@@ -36,7 +38,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
     @Override
     public Manufacturer save(Manufacturer manufacturer) {
-        return null;
+        return manufacturerRepository.save(manufacturer);
     }
 
     @Override
