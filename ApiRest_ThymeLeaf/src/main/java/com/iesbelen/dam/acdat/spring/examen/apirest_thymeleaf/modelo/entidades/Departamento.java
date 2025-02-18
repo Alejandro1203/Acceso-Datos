@@ -19,7 +19,7 @@ public class Departamento {
     private String ubicacion;
 
     @OneToMany(mappedBy = "depno")
-    private Set<com.iesbelen.dam.acdat.spring.examen.apirest_thymeleaf.modelo.entidades.Empleado> empleados = new LinkedHashSet<>();
+    private Set<Empleado> empleados = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -45,11 +45,11 @@ public class Departamento {
         this.ubicacion = ubicacion;
     }
 
-    public Set<com.iesbelen.dam.acdat.spring.examen.apirest_thymeleaf.modelo.entidades.Empleado> getEmpleados() {
+    public Set<Empleado> getEmpleados() {
         return empleados;
     }
 
-    public void setEmpleados(Set<com.iesbelen.dam.acdat.spring.examen.apirest_thymeleaf.modelo.entidades.Empleado> empleados) {
+    public void setEmpleados(Set<Empleado> empleados) {
         this.empleados = empleados;
     }
 
