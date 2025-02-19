@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Jugador</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="container">
+    <h1>Detalles del Jugador</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <td th:text="${jugador.nombre}"></td>
+        </tr>
+        <tr>
+            <th>Posicion</th>
+            <td th:text="${jugador.posicion}"></td>
+        </tr>
+        <tr>
+            <th>Dorsal</th>
+            <td th:text="${jugador.dorsal}"></td>
+        </tr>
+    </table>
+    <div class="button-container">
+        <a href="/verjugadores" class="button">Volver</a>
+    </div>
+</div>
+</body>
+</html>
